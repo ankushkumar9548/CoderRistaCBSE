@@ -123,8 +123,8 @@
         <section class="view-section active" id="view-dashboard">
           
           <!-- Welcome Banner -->
-          <div class="info-banner" style="display: flex; align-items: center; gap: 24px; padding: 28px 32px;">
-            <div class="mobile-hidden-logo" style="background: rgba(255,255,255,0.08); padding: 18px; border-radius: 16px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+          <div class="info-banner">
+            <div class="mobile-hidden-logo">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="75" height="75" style="filter: drop-shadow(0 0 8px rgba(255, 107, 74, 0.6));">
                 <!-- Left Bracket '<' in Orange -->
                 <path d="M 32 30 C 26 35, 14 45, 14 50 C 14 55, 26 65, 32 70" stroke="#FF6B4A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
@@ -135,15 +135,15 @@
                 <path d="M 68 54 C 58 54, 55 58, 50 53 C 48 51, 52 46, 54 46 C 60 46, 70 50, 76 50" stroke="#E8B339" stroke-width="5" stroke-linecap="round" fill="none" />
               </svg>
             </div>
-            <div class="info-content" style="flex: 1;">
-              <h2 style="font-size: 26px; font-weight: 800; font-family: var(--font-heading);">Welcome to the Code<span style="color: #FF6B4A;">Rishta</span> Portal</h2>
-              <p style="font-size: 14px; opacity: 0.9;">A completely free, curated hub of digital learning resources, PDFs, PPTs, study materials, and interactive template generators designed for teachers and students.</p>
+            <div class="info-content">
+              <h2>Welcome to the Code<span style="color: #FF6B4A;">Rishta</span> Portal</h2>
+              <p>A completely free, curated hub of digital learning resources, PDFs, PPTs, study materials, and interactive template generators designed for teachers and students.</p>
             </div>
             <div class="info-actions">
               <button class="btn btn-white" onclick="switchTab('browse')">
                 <i class="fas fa-search"></i> Explore Resources
               </button>
-              <button class="btn btn-primary" style="background-color: var(--bg-sidebar); border-color: rgba(255,255,255,0.15);" onclick="switchTab('generators')">
+              <button class="btn btn-primary" onclick="switchTab('generators')">
                 <i class="fas fa-cog"></i> Generate Worksheets
               </button>
             </div>
