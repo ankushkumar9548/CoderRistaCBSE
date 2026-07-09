@@ -406,17 +406,12 @@
   <script src="generator.js"></script>
   <script src="app.js"></script>
   
-  <!-- Handle mobile sidebar toggle setup -->
+  <!-- Reset mobile sidebar active class on screen resize to desktop -->
   <script>
-    if (window.innerWidth <= 1024) {
-      document.getElementById('sidebar-toggle-btn').style.display = 'flex';
-    }
     window.addEventListener('resize', () => {
-      if (window.innerWidth <= 1024) {
-        document.getElementById('sidebar-toggle-btn').style.display = 'flex';
-      } else {
-        document.getElementById('sidebar-toggle-btn').style.display = 'none';
-        document.getElementById('app-sidebar').classList.remove('active');
+      if (window.innerWidth > 1024) {
+        const sidebar = document.getElementById('app-sidebar');
+        if (sidebar) sidebar.classList.remove('active');
       }
     });
   </script>
