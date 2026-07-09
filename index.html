@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeRishta - Educational Portal</title>
+  
+  <!-- Font Awesome for premium icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Link stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Web App SEO Meta tags -->
+  <meta name="description" content="A premium curated educational portal for teachers and students, compiling digital resources, study materials, and interactive exam/test generators.">
+  <meta name="author" content="CodeRishta">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="app-sidebar">
+      <div class="brand-container" data-category="HOME">
+        <div class="brand-logo" style="background: none; padding: 0; display: flex; align-items: center; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="54" height="54" style="filter: drop-shadow(0 0 5px rgba(255, 107, 74, 0.5));">
+            <!-- Left Bracket '<' in Orange -->
+            <path d="M 32 30 C 26 35, 14 45, 14 50 C 14 55, 26 65, 32 70" stroke="#FF6B4A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+            <!-- Right Bracket '>' in Gold -->
+            <path d="M 68 30 C 74 35, 86 45, 86 50 C 86 55, 74 65, 68 70" stroke="#E8B339" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+            <!-- Hands Connection Lines -->
+            <path d="M 32 46 C 42 46, 45 42, 50 47 C 52 49, 48 54, 46 54 C 40 54, 30 50, 24 50" stroke="#FF6B4A" stroke-width="5" stroke-linecap="round" fill="none" />
+            <path d="M 68 54 C 58 54, 55 58, 50 53 C 48 51, 52 46, 54 46 C 60 46, 70 50, 76 50" stroke="#E8B339" stroke-width="5" stroke-linecap="round" fill="none" />
+          </svg>
+        </div>
+        <div>
+          <span class="brand-name">Code<span style="color: #FF6B4A;">Rishta</span></span>
+          <span class="brand-subtitle">Building Connections</span>
+        </div>
+      </div>
+      
+      <div class="sidebar-menu">
+        <a href="#" class="sidebar-link active" data-category="HOME">
+          <span><i class="fas fa-home" style="margin-right: 8px;"></i> HOME</span>
+          <span class="badge-count" id="badge-home-count">89</span>
+        </a>
+        
+        <div class="menu-section-title">Senior Secondary (XI-XII)</div>
+        <div class="nav-links-sub" id="nav-senior-sec">
+          <!-- Populated dynamically via app.js -->
+        </div>
+        
+        <div class="menu-section-title">Middle School (VI-X)</div>
+        <div class="nav-links-sub" id="nav-middle">
+          <!-- Populated dynamically via app.js -->
+        </div>
+        
+        <div class="menu-section-title">Primary School (I-V)</div>
+        <div class="nav-links-sub" id="nav-primary">
+          <!-- Populated dynamically via app.js -->
+        </div>
+        
+        <div class="menu-section-title">Specialized Resources</div>
+        <div class="nav-links-sub" id="nav-special">
+          <!-- Populated dynamically via app.js -->
+        </div>
+        
+        <div class="menu-section-title">Exam & Job Prep</div>
+        <div class="nav-links-sub" id="nav-exam-prep">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </div>
+      
+      <div class="sidebar-footer">
+        <a href="#" class="sidebar-link" id="nav-fav-link" data-category="FAVORITES">
+          <span><i class="fas fa-bookmark" style="margin-right: 8px; color: #fbbf24;"></i> Favorites</span>
+          <span class="badge-count" id="fav-count-badge" style="background-color: #fbbf24; color: #020617; display: none;">0</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Sticky Header -->
+      <header class="app-header">
+        <div class="header-left">
+          <!-- Mobile Sidebar Toggle -->
+          <button class="btn-circle" id="sidebar-toggle-btn" style="display: none;" onclick="document.getElementById('app-sidebar').classList.toggle('active')">
+            <i class="fas fa-bars"></i>
+          </button>
+          
+          <div class="search-box-container">
+            <i class="fas fa-search"></i>
+            <input type="text" class="search-input" id="search-input" placeholder="Search resources or documents...">
+          </div>
+        </div>
+        
+        <div class="header-right">
+          <div class="nav-tabs-container">
+            <button class="nav-tab active" data-tab="dashboard">Dashboard</button>
+            <button class="nav-tab" data-tab="browse">Browse Resources</button>
+            <button class="nav-tab" data-tab="generators">Lesson & Test Creators</button>
+          </div>
+          
+          <button class="btn-circle" id="theme-toggle-btn" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Page Content Container -->
+      <div class="page-container">
+        
+        <!-- Breadcrumbs -->
+        <div class="breadcrumb">
+          <span>Portal</span>
+          <span class="breadcrumb-separator"><i class="fas fa-chevron-right" style="font-size: 10px;"></i></span>
+          <span id="breadcrumb-category">Home</span>
+        </div>
+
+        <!-- 1. DASHBOARD VIEW -->
+        <section class="view-section active" id="view-dashboard">
+          
+          <!-- Welcome Banner -->
+          <div class="info-banner" style="display: flex; align-items: center; gap: 24px; padding: 28px 32px;">
+            <div class="mobile-hidden-logo" style="background: rgba(255,255,255,0.08); padding: 18px; border-radius: 16px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="75" height="75" style="filter: drop-shadow(0 0 8px rgba(255, 107, 74, 0.6));">
+                <!-- Left Bracket '<' in Orange -->
+                <path d="M 32 30 C 26 35, 14 45, 14 50 C 14 55, 26 65, 32 70" stroke="#FF6B4A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                <!-- Right Bracket '>' in Gold -->
+                <path d="M 68 30 C 74 35, 86 45, 86 50 C 86 55, 74 65, 68 70" stroke="#E8B339" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                <!-- Hands Connection Lines -->
+                <path d="M 32 46 C 42 46, 45 42, 50 47 C 52 49, 48 54, 46 54 C 40 54, 30 50, 24 50" stroke="#FF6B4A" stroke-width="5" stroke-linecap="round" fill="none" />
+                <path d="M 68 54 C 58 54, 55 58, 50 53 C 48 51, 52 46, 54 46 C 60 46, 70 50, 76 50" stroke="#E8B339" stroke-width="5" stroke-linecap="round" fill="none" />
+              </svg>
+            </div>
+            <div class="info-content" style="flex: 1;">
+              <h2 style="font-size: 26px; font-weight: 800; font-family: var(--font-heading);">Welcome to the Code<span style="color: #FF6B4A;">Rishta</span> Portal</h2>
+              <p style="font-size: 14px; opacity: 0.9;">A completely free, curated hub of digital learning resources, PDFs, PPTs, study materials, and interactive template generators designed for teachers and students.</p>
+            </div>
+            <div class="info-actions">
+              <button class="btn btn-white" onclick="switchTab('browse')">
+                <i class="fas fa-search"></i> Explore Resources
+              </button>
+              <button class="btn btn-primary" style="background-color: var(--bg-sidebar); border-color: rgba(255,255,255,0.15);" onclick="switchTab('generators')">
+                <i class="fas fa-cog"></i> Generate Worksheets
+              </button>
+            </div>
+          </div>
+
+          <!-- Aggregate Statistics -->
+          <div class="dashboard-stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-link"></i></div>
+              <div>
+                <div class="stat-value" id="stat-total">0</div>
+                <div class="stat-label">Total Shared Links</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+              <div>
+                <div class="stat-value" id="stat-files">0</div>
+                <div class="stat-label">Google Drive Files</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fab fa-youtube"></i></div>
+              <div>
+                <div class="stat-value" id="stat-videos">0</div>
+                <div class="stat-label">YouTube Tutorials</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+              <div>
+                <div class="stat-value" id="stat-quizzes">0</div>
+                <div class="stat-label">MyGov Quizzes</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Dashboard Rows -->
+          <div class="dashboard-sections-row">
+            <!-- Recent Additions -->
+            <div>
+              <div class="dashboard-box">
+                <h3 class="box-title"><i class="fas fa-history text-primary"></i> Featured Blog Resources</h3>
+                <div class="resources-grid" id="recent-resources-grid">
+                  <!-- Loaded Dynamically -->
+                </div>
+              </div>
+            </div>
+            
+            <!-- Sidebar Utilities -->
+            <div>
+              <!-- Social Channels Join -->
+              <div class="dashboard-box">
+                <h3 class="box-title"><i class="fas fa-share-nodes text-success"></i> Community Links</h3>
+                <div class="quick-links-list">
+                  <div class="quick-link-item whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="quick-link-details" style="flex: 1;">
+                      <h5>WhatsApp Study Channel</h5>
+                      <p>E-Content alerts for all classes</p>
+                    </div>
+                    <a href="https://whatsapp.com/channel/0029VanX21nFcowD91xPuB3P" target="_blank" class="btn btn-secondary btn-sm" style="padding: 6px 12px; font-size:12px;">Join</a>
+                  </div>
+                  
+                  <div class="quick-link-item whatsapp">
+                    <i class="fab fa-whatsapp" style="background-color: #dcfce7; color: #22c55e;"></i>
+                    <div class="quick-link-details" style="flex: 1;">
+                      <h5>Job Prep WhatsApp Group</h5>
+                      <p>DSSSB, KVS, NVS preparations</p>
+                    </div>
+                    <a href="https://whatsapp.com/channel/0029Vb6mbQuAe5VpnkEhqJ3b" target="_blank" class="btn btn-secondary btn-sm" style="padding: 6px 12px; font-size:12px;">Join</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Kind Attention Disclaimer -->
+              <div class="dashboard-box" style="background-color: var(--accent-light); border-color: var(--accent-color);">
+                <h3 class="box-title" style="color: var(--accent-color);"><i class="fas fa-exclamation-circle"></i> Kind Attention</h3>
+                <p style="font-size: 13px; line-height: 1.5; color: var(--text-primary);">
+                  All resources available on this portal are 100% free of cost. This portal serves as a clean, centralized index to help teachers and students discover shared educational materials.
+                </p>
+                <p style="font-size: 11px; margin-top: 12px; color: var(--text-light);">
+                  Disclaimer: Original copyright belongs to the respective content developers.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. BROWSE RESOURCES VIEW -->
+        <section class="view-section" id="view-browse">
+          <div class="resources-control-bar">
+            <div>
+              <h2 class="page-title" id="current-category-title">HOME</h2>
+              <p class="page-subtitle">Showing documents and worksheets shared under this category.</p>
+            </div>
+            
+            <div class="filter-tags-container">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="pdf"><i class="far fa-file-pdf" style="margin-right: 4px;"></i> PDFs</button>
+              <button class="filter-btn" data-filter="video"><i class="fab fa-youtube" style="margin-right: 4px;"></i> Videos</button>
+              <button class="filter-btn" data-filter="quiz"><i class="fas fa-question-circle" style="margin-right: 4px;"></i> Quizzes</button>
+              <button class="filter-btn" data-filter="software"><i class="fas fa-tools" style="margin-right: 4px;"></i> Software & AI Tools</button>
+            </div>
+          </div>
+
+          <div class="resources-grid" id="resources-grid">
+            <!-- Populated dynamically via app.js -->
+          </div>
+        </section>
+
+        <!-- 3. GENERATORS VIEW -->
+        <section class="view-section" id="view-generators">
+          <div class="page-header">
+            <h2 class="page-title">Interactive Document Generators</h2>
+            <p class="page-subtitle">Fill in the fields to instantly generate curriculum worksheets, test papers, solutions or lesson plans for your classes.</p>
+          </div>
+
+          <div class="generator-layout">
+            <!-- Sidebar Controls -->
+            <div class="generator-control-box">
+              <h4 class="form-label" style="margin-bottom: 12px;">Select Generator Type</h4>
+              <div class="generator-type-selector">
+                <div class="gen-type-card active" data-type="test">
+                  <i class="fas fa-file-signature text-danger"></i>
+                  <span class="gen-type-label">Class Test Maker</span>
+                </div>
+                <div class="gen-type-card" data-type="worksheet">
+                  <i class="fas fa-file-invoice text-warning"></i>
+                  <span class="gen-type-label">Worksheet Maker</span>
+                </div>
+                <div class="gen-type-card" data-type="solutions">
+                  <i class="fas fa-book-reader text-success"></i>
+                  <span class="gen-type-label">NCERT Solutions</span>
+                </div>
+                <div class="gen-type-card" data-type="lesson_plan">
+                  <i class="fas fa-calendar-day text-primary"></i>
+                  <span class="gen-type-label">Lesson Plan Creator</span>
+                </div>
+                <div class="gen-type-card" data-type="homework">
+                  <i class="fas fa-sun text-info"></i>
+                  <span class="gen-type-label">Holiday Homework</span>
+                </div>
+                <div class="gen-type-card" data-type="mcq_short">
+                  <i class="fas fa-list-ol" style="color: #6366f1;"></i>
+                  <span class="gen-type-label">MCQ & Short Test</span>
+                </div>
+              </div>
+
+              <!-- Form Parameters -->
+              <div class="generator-form">
+                <div class="form-group">
+                  <label class="form-label">Class / Grade</label>
+                  <select class="form-control" id="gen-class">
+                    <option value="Class VI">Class VI</option>
+                    <option value="Class VII">Class VII</option>
+                    <option value="Class VIII">Class VIII</option>
+                    <option value="Class IX">Class IX</option>
+                    <option value="Class X" selected>Class X</option>
+                    <option value="Class XI">Class XI</option>
+                    <option value="Class XII">Class XII</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label">Subject</label>
+                  <select class="form-control" id="gen-subject">
+                    <!-- Populated dynamically -->
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label">Chapter / Topic</label>
+                  <input type="text" class="form-control" id="gen-chapter" placeholder="e.g. Light, Electricity, Algebra" value="Light">
+                </div>
+                
+                <div class="form-group" id="gen-field-difficulty">
+                  <label class="form-label">Difficulty Level</label>
+                  <select class="form-control" id="gen-difficulty">
+                    <option value="Easy">Easy</option>
+                    <option value="Moderate" selected>Moderate</option>
+                    <option value="Hard">Hard</option>
+                    <option value="Mixed">Mixed Questions</option>
+                  </select>
+                </div>
+                
+                <div class="form-group" id="gen-field-marks">
+                  <label class="form-label">Total Marks</label>
+                  <select class="form-control" id="gen-marks">
+                    <option value="10">10 Marks (Short quiz)</option>
+                    <option value="20" selected>20 Marks (Standard test)</option>
+                    <option value="50">50 Marks (Terminal test)</option>
+                  </select>
+                </div>
+                
+                <button class="btn btn-primary btn-block" id="generate-btn">
+                  <i class="fas fa-magic"></i> Generate Document
+                </button>
+              </div>
+            </div>
+
+            <!-- Output Visualizer -->
+            <div class="generator-output-box" id="generated-doc-wrapper">
+              <div class="generator-header-row">
+                <h3 id="generator-title-text">Chapter Test Generator</h3>
+                
+                <div class="generator-actions" id="generator-actions">
+                  <button class="btn btn-primary btn-sm" id="print-gen-btn">
+                    <i class="fas fa-print"></i> Print / Save PDF
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Document Sheet -->
+              <div id="generated-doc-container">
+                <div class="text-center text-muted" style="padding: 100px 0;">
+                  <i class="fas fa-file-signature" style="font-size: 54px; margin-bottom: 20px; opacity: 0.3;"></i>
+                  <p>Document will be generated here.</p>
+                  <p style="font-size:12px;">Fill the parameters in the left panel and click "Generate Document".</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <button class="mobile-nav-btn active" data-tab="dashboard">
+      <i class="fas fa-th-large"></i>
+      <span>Home</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="browse" onclick="selectCategory('HOME')">
+      <i class="fas fa-search"></i>
+      <span>Browse</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="generators">
+      <i class="fas fa-cog"></i>
+      <span>Tools</span>
+    </button>
+    <button class="mobile-nav-btn" data-tab="browse" onclick="selectCategory('FAVORITES')">
+      <i class="fas fa-bookmark"></i>
+      <span>Favorites</span>
+      <span class="mobile-badge-dot" id="mobile-fav-badge" style="display: none;"></span>
+    </button>
+  </nav>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Load Data and Scripts -->
+  <script src="data.js"></script>
+  <script src="generator.js"></script>
+  <script src="app.js"></script>
+  
+  <!-- Handle mobile sidebar toggle setup -->
+  <script>
+    if (window.innerWidth <= 1024) {
+      document.getElementById('sidebar-toggle-btn').style.display = 'flex';
+    }
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 1024) {
+        document.getElementById('sidebar-toggle-btn').style.display = 'flex';
+      } else {
+        document.getElementById('sidebar-toggle-btn').style.display = 'none';
+        document.getElementById('app-sidebar').classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
