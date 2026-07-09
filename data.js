@@ -181,7 +181,7 @@ const EDUCATIONAL_DATA = {
       },
       {
         "title": "Access COMPETENCY BASED QUESTION BANK - TERM II ( CLASS VIII - ALL SUBJECTS )",
-        "url": "https://youtube.com/@ict-sciencerekha?si=dAnbbk7hs3NBsdia",
+        "url": "https://www.youtube.com/@CodeRishta",
         "type": "YouTube Video/Channel"
       },
       {
